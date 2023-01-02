@@ -15,9 +15,7 @@ import matplotlib.pyplot as plt
 def factorial(n):
     for i in range(1, n):
         n *= i
-    if n == 0:
-        return 1
-    return n
+    return n if n else 1
     # return n * factorial(n - 1) if n else 1 # raises recursion error if n is too large
 
 
@@ -71,7 +69,7 @@ def main():
     #print(
     #    f'Percentage of success reached after Laplace smoothing: {k/n*100:.2f}%')
     print(
-        f'Bernoulli distribution of {p*100:.2f}% success rate: {binomial(n, k, p)} at {k} successes in {n} trials')
+        f'Binomial distribution of {p*100:.2f}% success rate: {binomial(n, k, p)} at {k} successes in {n} trials')
     print(
         f'Plotting binomial distribution of {p*100:.2f}% success rate...')
     plot_binomial(n, p)

@@ -8,9 +8,7 @@ import matplotlib.pyplot as plt
 def factorial(n):
     for i in range(1, n):
         n *= i
-    if n == 0:
-        return 1
-    return n
+    return n if n else 1
     # return n * factorial(n - 1) if n else 1 # raises recursion error if n is too large
 
 
@@ -53,8 +51,8 @@ def main():
     a = 0.5  # lower bound
     b = 1.0  # upper bound
     n = 10000  # precision of integral
-    success = 8  # number of successes
-    failure = 2  # number of failures
+    success = 80  # number of successes
+    failure = 20  # number of failures
     greater_than = riemann_sum(n, a, b,
                                f=lambda x: beta_distribution(x, success, failure))  # integral of beta distribution from a to b
     print(f'With {success} successes and {failure} failures:')
