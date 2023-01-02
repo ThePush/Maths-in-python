@@ -14,18 +14,17 @@ def riemann_sum(n, a, b, f):
     w = (b - a) / n  # width of rectangles
     res = 0  # return value
     k = 1  # counter
-    while k <= n:
-        res += w * f(a + k * w)  # add the area of the rectangles
-        k += 1
+    for k in range(1, n + 1):
+        res += w * f(a + k * w) # add the area of the rectangle
     return res
 
 
 def function_as_string(f):
     '''Return the function as a string'''
     source = inspect.getsource(f)  # get the source code of the function
-    return_string = source.split('return')[-1]  # get the string after return
+    return_string = source.split('return')[-1]  # get the string after 'return'
     return_string = return_string.strip()  # remove leading and trailing spaces
-    return_string = return_string.split('#')[0]  # remove comments
+    return_string = return_string.split('#')[0]  # remove the comment
     return_string = return_string.replace('**', '^')
     return_string = return_string.replace('*', '')
     return_string = '$' + return_string + '$'  # add LaTeX math mode
@@ -33,7 +32,7 @@ def function_as_string(f):
 
 
 def plot_integrals(n, a, b, f):
-    '''Plot the function and the Riemann sum'''
+    '''Plot the function with the rectangles under the curve'''
     fig, ax = plt.subplots()
     x = np.linspace(a, b, 1000)
     y = f(x)

@@ -65,11 +65,11 @@ def main():
 
     n = int(input('Number of experiments: '))
     k = int(input('Number of successes: '))
-    n += 2  # laplace smoothing
-    k += 1  # laplace smoothing
+    #n += 2  # laplace smoothing
+    #k += 1  # laplace smoothing
     p = float(input('Probability of success (skippable): ') or k/n)
-    print(
-        f'Percentage of success reached after Laplace smoothing: {k/n*100:.2f}%')
+    #print(
+    #    f'Percentage of success reached after Laplace smoothing: {k/n*100:.2f}%')
     print(
         f'Bernoulli distribution of {p*100:.2f}% success rate: {binomial(n, k, p)} at {k} successes in {n} trials')
     print(
@@ -78,5 +78,5 @@ def main():
 
 
 if __name__ == '__main__':
-    warnings.filterwarnings('ignore')  # ignore numpy warnings
+    warnings.filterwarnings('ignore')  # ignore numpy warnings raised by masked arrays
     main()
