@@ -15,7 +15,7 @@ def riemann_sum(n, a, b, f):
     res = 0  # return value
     k = 1  # counter
     for k in range(1, n + 1):
-        res += w * f(a + k * w) # add the area of the rectangle
+        res += w * f(a + k * w) # add the area of the rectangle: width * height(=f(xi))
     return res
 
 

@@ -2,6 +2,7 @@ import warnings
 import numpy as np
 import functools
 import matplotlib.pyplot as plt
+from utils.math import factorial
 
 # n: number of experiments
 # k: number of successes
@@ -9,14 +10,6 @@ import matplotlib.pyplot as plt
 # q: probability of failure
 # Binomial function:
 # p(X = k) = n! / (k! * (n - k)!) * p^k * q^(n - k)
-
-
-@functools.cache
-def factorial(n):
-    for i in range(1, n):
-        n *= i
-    return n if n else 1
-    # return n * factorial(n - 1) if n else 1 # raises recursion error if n is too large
 
 
 def binomial(n, k, p):

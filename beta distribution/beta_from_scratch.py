@@ -2,28 +2,8 @@ import warnings
 import numpy as np
 import functools
 import matplotlib.pyplot as plt
-
-
-@functools.cache
-def factorial(n):
-    for i in range(1, n):
-        n *= i
-    return n if n else 1
-    # return n * factorial(n - 1) if n else 1 # raises recursion error if n is too large
-
-
-def riemann_sum(n, a, b, f):
-    '''Riemann's sum:
-    n = number of rectangles
-    a = lower bound
-    b = upper bound
-    f = function'''
-    w = (b - a) / n  # width of rectangles
-    res = 0  # return value
-    k = 1  # counter
-    for k in range(1, n + 1):
-        res += w * f(a + k * w)  # add the area of the rectangle
-    return res
+from utils.math import factorial
+from integrals.riemann_from_scratch import riemann_sum
 
 
 def beta_distribution(x: float, alpha: float, beta: float) -> float:
@@ -48,11 +28,11 @@ def plot_beta_distribution(success, failure, a, b):
 
 
 def main():
-    a = 0.5  # lower bound
+    a = 0.9  # lower bound
     b = 1.0  # upper bound
     n = 10000  # precision of integral
-    success = 80  # number of successes
-    failure = 20  # number of failures
+    success = 8  # number of successes
+    failure = 2  # number of failures
     greater_than = riemann_sum(n, a, b,
                                f=lambda x: beta_distribution(x, success, failure))  # integral of beta distribution from a to b
     print(f'With {success} successes and {failure} failures:')
